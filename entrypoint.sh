@@ -9,8 +9,7 @@ fi
 PARAMS="$PARAMS $EFB_PARAMS"
 
 if [ x"$EFB_AUTOUPDATE"x = x"true"x ]; then
-  pip3 freeze > /tmp/requirements.txt
-  pip3 install -r /tmp/requirements.txt --upgrade
+  pip3 install ehforwarderbot efb-telegram-master efb-wechat-slave --upgrade
 fi
 
 eval "ehforwarderbot $PARAMS"
