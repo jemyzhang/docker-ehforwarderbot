@@ -12,10 +12,9 @@ RUN apk --update upgrade \
     && apk --update add tzdata ca-certificates \
        ffmpeg libmagic python3 \
        tiff libwebp freetype lcms2 openjpeg py3-olefile openblas \
-    && apk add --no-cache --virtual .build-deps build-base gcc python3-dev zlib-dev jpeg-dev libwebp-dev \
-    && pip3 install numpy pillow pysocks ehforwarderbot efb-telegram-master efb-wechat-slave \
-    && apk del .build-deps \
-    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+       py3-numpy py3-pillow py3-cryptography py3-decorator
+RUN pip3 install pysocks ehforwarderbot efb-telegram-master efb-wechat-slave
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
 
 ADD entrypoint.sh /entrypoint.sh
